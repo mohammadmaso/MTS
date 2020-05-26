@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOC</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li>
+<ul>
+<li><a href="#پروژه-درخت-ئوشای-مینیمال">پروژه درخت ئوشای مینیمال</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h2 id="پروژه-درخت-ئوشای-مینیمال">پروژه درخت ئوشای مینیمال</h2>
+<p>با استفاده از جاوااسکریئت نوشته شده.<br>
+چون پک کردم فایل جاوا اسکریئتو بخاطر کتابخونه ها که استفاده کردم الگوریتم ها رو اینجا میذارم.<br>
+**برنامه از دو روش کروکسال و پریم استفاده می کند</p>
+<p>الگوریتم پریم استفاده شده :<br>
+توضیحات در کد</p>
+<pre><code>    primsMST() {
+
+// تعریف گراف
+
+const  MST  =  new  Graph();
+
+if (this.nodes.length  ===  0) {
+
+return  MST;
+
+}
+
+// انتخاب نود برای نقطه شروع
+
+let  s  =  this.nodes[0];
+
+// ساخت صف اولویت 
+
+let  edgeQueue  =  new  PriorityQueue(this.nodes.length  *  this.nodes.length);
+
+let  explored  =  new  Set();
+
+explored.add(s);
+
+MST.addNode(s);
+
+// اضافه کردن تمام نود ها به ضف اولویت بر اساس مقدار مسافت
+
+this.edges[s].forEach(edge  =&gt; {
+
+edgeQueue.enqueue([s, edge.node], edge.weight);
+
+});
+
+// کوچکترین یال انتخاب میشود و به گراف اضافه میشود
+
+let  currentMinEdge  =  edgeQueue.dequeue();
+
+while (!edgeQueue.isEmpty()) {
+
+// ادامه میدیم به حذف کردن یال ها تا بفهمیم همه نود ها دیده شدن
+
+while (!edgeQueue.isEmpty() &amp;&amp;  explored.has(currentMinEdge.data[1])) {
+
+currentMinEdge  =  edgeQueue.dequeue();
+
+}
+
+let  nextNode  =  currentMinEdge.data[1];
+
+//چک کردن دوباره خالی بودن صف اولیت 
+
+if (!explored.has(nextNode)) {
+
+MST.addNode(nextNode);
+
+MST.addEdge(currentMinEdge.data[0], nextNode, currentMinEdge.priority);
+
+// دوباره یال ها رو به صف اولیت اضافه میکنیم
+this.edges[nextNode].forEach(edge  =&gt; {
+
+edgeQueue.enqueue([nextNode, edge.node], edge.weight);
+
+});
+
+// مشخص کردن اینکه یک نود دیده شده یا نه explored.add(nextNode);
+
+s  =  nextNode;
+
+}
+
+}
+
+return  MST;
+
+}
+</code></pre>
+<p>برای پیاده سازی الگوریتم کروکسال از کتابخانه استفاده شد.<br>
+کد الگوریتم :</p>
+<pre><code>class Graph {
+  let EDGE_PAIRS = new Array(MAX_VERTICES);
+
+  kruskal() {
+    let counter;
+    let set = new SetUnion(this.vertices);
+
+    this.toEdgeArray(); // using EDGE_PAIRS
+    // sort by weight rather than a standard array value
+    quicksort(this.EDGE_PAIRS, this.connections.length, this.EDGE_PAIRS.length);
+
+    for (let i = 0; i &lt;= this.connections; i++) {
+      if (!sameComponent(set, EDGE_PAIRS[i].startVertex, EDGE_PAIRS[i].endVertex)) {
+        console.log(`edge ${EDGE_PAIRS[i].startVertex},${EDGE_PAIRS[i].endVertex} in MST`);
+        set.union(EDGE_PAIRS[i].startVertex, EDGE_PAIRS[i].endVertex);
+      }
+    }
+  }
+}
+</code></pre>
+<p>برای کار کردن با برنامه هم کافیه تعداد نود ها رو وارد کرد،  و تعداد رو تایید کرد<br>
+بعد از نود صفر تا تعداد انتخابی منهای یک شروع به تنظیم یال ها میکنیم<br>
+و بعد گزینه رسم رو میزنیم. خط های قرمز در گراف نشان دهنده درخت پوشای کمینه هست.</p>
+<p>محمد مسعودی همت آبادی 9527393<br>
+ماهان طریقتی 9525883</p>
+
+    </div>
+  </div>
+</body>
+
+</html>

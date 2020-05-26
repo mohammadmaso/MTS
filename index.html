@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minimum spanning tree</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+        <script src="./src/vis.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="./src/styles.css">
+
+
+
+    </head>
+    <body>
+            <br>
+            <br>
+                      <div class="container">
+                            
+                        <h1 class="title">
+                           
+                            Minimum spanning tree
+                        </h1>
+                        <div class="subtitle">
+                          Mohammad Masoudie/ Mahan Tarighati
+                          | <a href="./doc.html" class="button is-small is-warning">Read Doc</a>
+
+                        </div><hr>
+
+                      </div>
+
+                      <div class="container">
+
+                      </div>
+                   
+            <div class="container">
+                    <div class="buttons has-addons is-small">
+                            <button class="button is-primary is-light " >kruskal</button>
+                            <button class="button is-light is-danger " disabled>Prim</button>
+                          </div>
+            </div>
+            <br>
+            <div class="container">
+                <form>
+                        <div><label class="label">Number Of Vertex:</label></div>
+
+                        <div class="field is-grouped">
+                                <p class="control ">
+                                
+                                  <input id="numv" class="input" type="number" placeholder="Count">
+                                  <a id="numc" class="button is-primary" >
+                                        Set Vertex
+                                      </a>
+                                      
+                                </p>
+                                
+                                
+                              </div>
+                              <div class="field is-grouped">
+                                    <p class="control ">
+                                      <input id="fromv" class="input" type="number" placeholder="From">
+                                      <br>
+                                      <input id="tov" class="input" type="number" placeholder="To">
+                                      <input id="dist" class="input" type="number" placeholder="Dist">
+                                      <a id="addedge" class="button is-info">
+                                            Add Edge
+                                          </a>
+                                          <a id="drowk" class="button is-danger is-light">
+                                                Drow tree with kruksal
+                                              </a>
+                                              <a id="drowp" class="button is-primary is-light">
+                                                    Drow tree with prim
+                                                  </a>
+                                          
+                                    </p>
+                                    
+                                    
+                                  </div>
+                </form>
+            </div>
+           <br> 
+            <div class="container">
+                scroll for zoom / Drag
+                    <div class="box" id="mynetwork"></div>
+            </div>
+        <script src="./dist/bundle.js"></script>
+    </body>
+</html>
