@@ -22,7 +22,7 @@
   "dependencies": {
     "bulma": "^0.8.2",
     "js-graph-algorithms": "^1.0.18",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "node-kruskal": "0.0.4",
     "vis-network": "^7.6.9"
   }
